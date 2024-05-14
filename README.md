@@ -1,30 +1,15 @@
-# React + TypeScript + Vite
+# SocDownloader
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+SocDownloader, short for Social Media Downloader, is a platform developed with TypeScript aimed at providing users with a seamless experience in downloading videos and images from various social media platforms.
 
-Currently, two official plugins are available:
+## Purpose
+I created this platform as a personal project to refine my TypeScript skills. Through the integration of APIs, SocDownloader facilitates the effortless retrieval of multimedia content by simply pasting the respective links from different social media platforms.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies
+- **TypeScript**: Used for building the core functionality of the platform, TypeScript ensures type safety and enhances code readability.
+- **Axios**: Leveraged for making HTTP requests to interact with social media APIs, Axios ensures efficient communication between the platform and external services.
+- **dotenv**: Employed for managing environment variables, dotenv enhances security and facilitates the configuration of the application.
+- **Tailwind CSS**: Utilized for styling the user interface, Tailwind CSS offers a utility-first approach for creating sleek and responsive designs.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Usage
+To use SocDownloader, simply paste the link of the video or image you wish to download from the supported social media platforms, and the platform will handle the rest, providing you with a hassle-free downloading experience.
