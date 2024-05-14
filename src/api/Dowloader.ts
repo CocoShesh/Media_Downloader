@@ -1,0 +1,23 @@
+import axios from "axios";
+const apiKey: string = import.meta.env.VITE_APP_X_RAPIDAPI_KEY as string;
+
+export const downloadFacebookVideo = async (url: string) => {
+  try {
+    const options = {
+      method: "POST",
+      url: "https://all-media-downloader1.p.rapidapi.com/fb",
+      headers: {
+        "content-type": "application/json",
+        "X-RapidAPI-Key": apiKey,
+        "X-RapidAPI-Host": "all-media-downloader1.p.rapidapi.com",
+      },
+      data: {
+        url: url,
+      },
+    };
+    const response = await axios.request(options);
+    console.log(response.data);
+  } catch (error) {
+    console.error(error);
+  }
+};
