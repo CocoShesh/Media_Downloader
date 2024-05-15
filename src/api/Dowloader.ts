@@ -1,11 +1,11 @@
 import axios from "axios";
 const apiKey: string = import.meta.env.VITE_APP_X_RAPIDAPI_KEY as string;
 
-export const downloadFacebookVideo = async (url: string) => {
+export const Downloader = async (url: string, origin: string) => {
   try {
     const options = {
       method: "POST",
-      url: "https://all-media-downloader1.p.rapidapi.com/fb",
+      url: `https://all-media-downloader1.p.rapidapi.com/${origin}`,
       headers: {
         "content-type": "application/json",
         "X-RapidAPI-Key": apiKey,
