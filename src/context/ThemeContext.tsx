@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, ReactNode } from "react";
 
 type ThemeContextType = {
   theme: boolean;
@@ -7,7 +7,7 @@ type ThemeContextType = {
 };
 
 type UserProviderProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 const ThemeContext = createContext({} as ThemeContextType);
