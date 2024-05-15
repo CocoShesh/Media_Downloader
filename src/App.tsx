@@ -14,7 +14,7 @@ function App() {
 
   return (
     <>
-      <main className="min-h-screen flex flex-col items-center justify-center ">
+      <main className="min-h-screen flex flex-col items-center justify-center bg-white px-7 pb-20 max-lg:px-3 ">
         <Header />
         <MainContent />
       </main>
