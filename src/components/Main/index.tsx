@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Downloader } from "../../api/Dowloader";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useDownloader } from "../../context/DownloaderContext";
 
 type Inputs = {
   url: string;
@@ -12,6 +13,7 @@ const MainContent = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
+  const { setSelectedType } = useDownloader();
   const [path, setPath] = useState<string>("");
 
   const onSubmit: SubmitHandler<Inputs> = data => {
@@ -30,6 +32,7 @@ const MainContent = () => {
       console.log("Invalid URL");
     }
     Downloader(data.url, path);
+    setSelectedType(data.selectedType);
   };
   return (
     <>
