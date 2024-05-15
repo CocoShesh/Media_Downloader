@@ -2,6 +2,8 @@
 
 import Header from "./components/Header";
 import MainContent from "./components/Main";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Download from "./pages/Download";
 
 function App() {
   // const { size, elapsed, percentage, download, cancel, error, isInProgress } =
@@ -16,7 +18,12 @@ function App() {
     <>
       <main className="min-h-screen flex flex-col items-center justify-center bg-white px-7 pb-20 max-lg:px-3 ">
         <Header />
-        <MainContent />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<MainContent />} />
+            <Route path="/Download" element={<Download />} />
+          </Routes>
+        </BrowserRouter>
       </main>
     </>
   );
