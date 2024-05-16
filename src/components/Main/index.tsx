@@ -2,38 +2,55 @@ import { useState } from "react";
 import { Downloader } from "../../api/Dowloader";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useDownloader } from "../../context/DownloaderContext";
+import { useNavigate } from "react-router-dom";
 
 type Inputs = {
   url: string;
   selectedType: string;
 };
+
 const MainContent = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
-  const { setSelectedType } = useDownloader();
-  const [path, setPath] = useState<string>("");
-
-  const onSubmit: SubmitHandler<Inputs> = data => {
+  const { setSelectedType, setData } = useDownloader();
+  const [loading, setLoading] = useState<boolean>(false);
+  const Navigate = useNavigate();
+  const onSubmit: SubmitHandler<Inputs> = async data => {
     const origin = new URL(data.url).origin;
+    let downloadPath = "";
+
     if (origin.includes("facebook")) {
-      setPath("fb");
+      downloadPath = "fb";
     } else if (origin.includes("instagram")) {
-      setPath("ig");
+      downloadPath = "ig";
     } else if (origin.includes("twitter")) {
-      setPath("tw");
+      downloadPath = "tw";
     } else if (origin.includes("tiktok")) {
-      setPath("tt");
+      downloadPath = "tt";
     } else if (origin.includes("youtube")) {
-      setPath("yt");
+      downloadPath = "yt";
     } else {
       console.log("Invalid URL");
+      return;
     }
-    Downloader(data.url, path);
+
     setSelectedType(data.selectedType);
+
+    try {
+      setLoading(true);
+      const response = await Downloader(data.url, downloadPath);
+      setData(response);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+      Navigate("/download");
+    }
   };
+
   return (
     <>
       <section className="h-[500px] card flex flex-col items-center justify-center w-full px-64  2xl:w-[1500px] max-lg:px-5  mt-5 rounded-2xl ">
@@ -43,13 +60,14 @@ const MainContent = () => {
         <h1 className="text-white text-5xl w-[700px] max-md:w-full text-center max-sm:text-4xl ">
           Download High-quality videos and images from different social media
         </h1>
+        {loading && <h1 className="text-white">Loading...</h1>}
         <form onSubmit={handleSubmit(onSubmit)}>
           <section className="h-16 mt-10 w-full  relative flex rounded-full bg-white p-2  gap-3 text-black">
             <input
               type="text"
               placeholder="Paste a link here..."
               className="w-full h-full bg-[#f2f3f6] rounded-full px-10 placeholder:text-black  focus:outline-[#230056]"
-              {...register("url", { required: "This field in required" })}
+              {...register("url", { required: "This field is required" })}
             />
             {errors.url && (
               <span className="text-[#ffd14c] absolute -top-6 left-8">
