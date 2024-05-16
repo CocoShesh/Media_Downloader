@@ -1,28 +1,35 @@
-import { useContext, createContext, useState, ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  Dispatch,
+  SetStateAction,
+} from "react";
 
-type DownloadData = {
-  response: {
-    quality: string;
-    link: string;
-  };
+type DownloadLink = {
+  quality: string;
+  link: string;
 };
+
+interface DownloadItem {
+  title: string;
+  picture: string;
+  links: DownloadLink[];
+}
+
 type DownloaderContextType = {
   selectedType: string;
-  setSelectedType: React.Dispatch<React.SetStateAction<string>>;
-  data: DownloadData | null;
-  setData: React.Dispatch<React.SetStateAction<DownloadData | null>>;
+  setSelectedType: Dispatch<SetStateAction<string>>;
+  data: DownloadItem | null;
+  setData: Dispatch<SetStateAction<DownloadItem | null>>;
 };
 
 type DownloaderProviderProps = {
   children: ReactNode;
 };
 
-const DownloaderContext = createContext<DownloaderContextType>({
-  selectedType: "",
-  setSelectedType: () => {},
-  data: null,
-  setData: () => {},
-});
+const DownloaderContext = createContext({} as DownloaderContextType);
 
 export const useDownloader = () => {
   return useContext(DownloaderContext);
@@ -30,12 +37,11 @@ export const useDownloader = () => {
 
 export const DownloaderProvider = ({ children }: DownloaderProviderProps) => {
   const [selectedType, setSelectedType] = useState("");
-  const [data, setData] = useState<DownloadData | null>(null);
+  const [data, setData] = useState<DownloadItem | null>(null);
 
-  console.log("data", data);
   return (
     <DownloaderContext.Provider
-      value={{ selectedType, setSelectedType, setData, data }}
+      value={{ selectedType, setSelectedType, data, setData }}
     >
       {children}
     </DownloaderContext.Provider>
