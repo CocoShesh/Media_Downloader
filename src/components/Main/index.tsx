@@ -19,29 +19,11 @@ const MainContent = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const Navigate = useNavigate();
   const onSubmit: SubmitHandler<Inputs> = async data => {
-    const origin = new URL(data.url).origin;
-    let downloadPath = "";
-
-    if (origin.includes("facebook")) {
-      downloadPath = "fb";
-    } else if (origin.includes("instagram")) {
-      downloadPath = "ig";
-    } else if (origin.includes("twitter")) {
-      downloadPath = "tw";
-    } else if (origin.includes("tiktok")) {
-      downloadPath = "tt";
-    } else if (origin.includes("youtube")) {
-      downloadPath = "yt";
-    } else {
-      console.log("Invalid URL");
-      return;
-    }
-
     setSelectedType(data.selectedType);
 
     try {
       setLoading(true);
-      const response = await Downloader(data.url, downloadPath);
+      const response = await Downloader(data.url);
       setData(response);
     } catch (error) {
       console.error(error);
