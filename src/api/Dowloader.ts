@@ -1,17 +1,18 @@
 import axios from "axios";
 const apiKey: string = import.meta.env.VITE_APP_X_RAPIDAPI_KEY as string;
-export const Downloader = async (url: string, origin: string) => {
+export const Downloader = async (url: string) => {
   try {
     const options = {
-      method: "POST",
-      url: `https://all-media-downloader1.p.rapidapi.com/${origin}`,
+      method: "GET",
+      url: "https://social-media-video-downloader.p.rapidapi.com/smvd/get/all",
       headers: {
         "content-type": "application/json",
         "X-RapidAPI-Key": apiKey,
-        "X-RapidAPI-Host": "all-media-downloader1.p.rapidapi.com",
+        "X-RapidAPI-Host": "social-media-video-downloader.p.rapidapi.com",
       },
-      data: {
+      params: {
         url: url,
+        fileName: "media",
       },
     };
     const response = await axios.request(options);
