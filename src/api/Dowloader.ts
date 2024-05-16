@@ -1,6 +1,5 @@
 import axios from "axios";
 const apiKey: string = import.meta.env.VITE_APP_X_RAPIDAPI_KEY as string;
-
 export const Downloader = async (url: string, origin: string) => {
   try {
     const options = {
@@ -16,7 +15,7 @@ export const Downloader = async (url: string, origin: string) => {
       },
     };
     const response = await axios.request(options);
-    console.log(response.data);
+    return response.data;
   } catch (error) {
     console.error(error);
   }
