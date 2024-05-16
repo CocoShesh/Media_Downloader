@@ -2,8 +2,8 @@ import { useContext, createContext, useState, ReactNode } from "react";
 
 type DownloadData = {
   response: {
-    resolution: string;
-    url: string;
+    quality: string;
+    link: string;
   };
 };
 type DownloaderContextType = {
@@ -32,6 +32,7 @@ export const DownloaderProvider = ({ children }: DownloaderProviderProps) => {
   const [selectedType, setSelectedType] = useState("");
   const [data, setData] = useState<DownloadData | null>(null);
 
+  console.log("data", data);
   return (
     <DownloaderContext.Provider
       value={{ selectedType, setSelectedType, setData, data }}
