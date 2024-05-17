@@ -3,7 +3,7 @@ import { Downloader } from "../../api/Dowloader";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useDownloader } from "../../context/DownloaderContext";
 import { useNavigate } from "react-router-dom";
-
+import { PiLinkSimpleBold } from "react-icons/pi";
 type Inputs = {
   url: string;
   selectedType: string;
@@ -44,13 +44,16 @@ const MainContent = () => {
         </h1>
         {loading && <h1 className="text-white">Loading...</h1>}
         <form onSubmit={handleSubmit(onSubmit)}>
-          <section className="h-16 mt-10 w-full  relative flex rounded-full bg-white p-2  gap-3 text-black">
-            <input
-              type="text"
-              placeholder="Paste a link here..."
-              className="w-full h-full bg-[#f2f3f6] rounded-full px-10 placeholder:text-black  focus:outline-[#230056]"
-              {...register("url", { required: "This field is required" })}
-            />
+          <section className="max-md:h-fit h-16  max-md:rounded-lg max-md:p-5 mt-10 w-full  relative flex  max-md:flex-col rounded-full bg-white p-2  gap-3 text-black">
+            <section className="relative">
+              <input
+                type="text"
+                placeholder="Paste a link here..."
+                className="w-full h-full max-md:h-10 max-md:rounded-lg bg-[#f2f3f6] rounded-full px-10 placeholder:text-black  focus:outline-[#230056]"
+                {...register("url", { required: "This field is required" })}
+              />
+              <PiLinkSimpleBold className="absolute top-3 left-3 text-xl" />
+            </section>
             {errors.url && (
               <span className="text-[#ffd14c] absolute -top-6 left-8">
                 {errors.url.message}
@@ -58,7 +61,7 @@ const MainContent = () => {
             )}
             <section className="relative">
               <select
-                className="select select-bordered w-[150px] rounded-full focus:outline-blue-600 bg-[#f2f3f6]"
+                className="select select-bordered w-[150px]  max-md:h-10 max-md:rounded-lg  max-md:w-full rounded-full focus:outline-blue-600 bg-[#f2f3f6]"
                 {...register("selectedType", {
                   required: "This field is required",
                 })}
@@ -78,7 +81,7 @@ const MainContent = () => {
 
             <button
               type="submit"
-              className="w-[250px] h-full rounded-full bg-[#e47231] text-white "
+              className="w-[250px] h-full  max-md:h-10 max-md:rounded-lg max-md:w-full  rounded-full bg-[#e47231] text-white "
             >
               DOWNLOAD
             </button>
