@@ -9,13 +9,17 @@ import {
 
 type DownloadLink = {
   quality: string;
-  link: string;
+  url: string;
+  extension: string;
 };
 
 interface DownloadItem {
   title: string;
   picture: string;
-  links: DownloadLink[];
+  medias: DownloadLink[];
+  thumbnail: string;
+  sd: string;
+  hd: string;
 }
 
 type DownloaderContextType = {
