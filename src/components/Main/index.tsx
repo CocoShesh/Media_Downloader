@@ -44,8 +44,8 @@ const MainContent = () => {
         </h1>
         {loading && <h1 className="text-white">Loading...</h1>}
         <form onSubmit={handleSubmit(onSubmit)}>
-          <section className="max-md:h-fit h-16  max-md:rounded-lg max-md:p-5 mt-10 w-full  relative flex  max-md:flex-col rounded-full bg-white p-2  gap-3 text-black">
-            <section className="relative">
+          <section className="max-md:h-fit h-16  max-md:rounded-lg max-md:p-5 mt-10 w-[700px]  max-md:w-full relative flex  max-md:flex-col rounded-full bg-white p-2  gap-3 text-black">
+            <section className="relative w-full">
               <input
                 type="text"
                 placeholder="Paste a link here..."
@@ -59,29 +59,10 @@ const MainContent = () => {
                 {errors.url.message}
               </span>
             )}
-            <section className="relative">
-              <select
-                className="select select-bordered w-[150px]  max-md:h-10 max-md:rounded-lg  max-md:w-full rounded-full focus:outline-blue-600 bg-[#f2f3f6]"
-                {...register("selectedType", {
-                  required: "This field is required",
-                })}
-              >
-                <option value="">Select Type</option>
-                <option value="mp3">MP3</option>
-                <option value="mp4">MP4</option>
-                <option value="png">PNG</option>
-                <option value="jpg">JPG</option>
-              </select>
-              {errors.selectedType && (
-                <span className="text-[#ffd14c] absolute z-20 -top-10 w-full left-2">
-                  {errors.selectedType.message}
-                </span>
-              )}
-            </section>
 
             <button
               type="submit"
-              className="w-[250px] h-full  max-md:h-10 max-md:rounded-lg max-md:w-full  rounded-full bg-[#e47231] text-white "
+              className="w-[200px] h-full  max-md:h-10 max-md:rounded-lg max-md:w-full  rounded-full bg-[#e47231] text-white "
             >
               DOWNLOAD
             </button>
