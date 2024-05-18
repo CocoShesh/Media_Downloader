@@ -7,22 +7,10 @@ const Download = () => {
   const [selectedItem, setSelectedItem] = useState<string>("");
   const { download, percentage, isInProgress } = useDownloader();
 
-  const isValidUrl = (url: string) => {
-    try {
-      new URL(url);
-      return true;
-    } catch {
-      return false;
-    }
-  };
-
   const handleSelectedItem = (link: string): void => {
-    if (isValidUrl(link)) {
-      download(link, "download.mp4");
-      setSelectedItem(link);
-    } else {
-      console.error("Invalid URL:", link);
-    }
+    download(link, "download.mp4");
+    setSelectedItem(link);
+    console.error("Invalid URL:", link);
   };
 
   return (
@@ -32,14 +20,14 @@ const Download = () => {
       </h1>
       <div>
         <section className="grid grid-cols-4 gap-5 mt-10 ">
-          {data?.links?.map((link, index) => (
+          {data?.medias?.map((link, index) => (
             <section
               key={index}
-              onClick={() => handleSelectedItem(link?.link)}
+              onClick={() => handleSelectedItem(link?.url)}
               className="bg-white w-[180px] cursor-pointer rounded-lg text-center text-black h-fit p-5"
             >
               {link?.quality}
-              {selectedItem === link?.link && (
+              {selectedItem === link?.url && (
                 <p className="text-red-500">
                   {isInProgress ? (
                     <p>Downloading file: {percentage}% </p>
