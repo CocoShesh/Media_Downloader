@@ -12,7 +12,7 @@ const Toggle = () => {
           }`}
         ></div>
       </section>
-      <IoMenu className="max-xl:visible xl:hidden text-3xl text-black cursor-pointer" />
+      <IoMenu className="max-xl:visible xl:hidden text-3xl text-black cursor-pointer dark:text-white" />
     </section>
   );
 };
