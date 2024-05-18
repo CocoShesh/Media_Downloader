@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { useDownloader as downloads } from "../../context/DownloaderContext";
 import useDownloader from "react-use-downloader";
-
 const Download = () => {
   const { data } = downloads();
-  const [selectedItem, setSelectedItem] = useState<string>("");
   const { download, percentage, isInProgress } = useDownloader();
-
-  const handleSelectedItem = (link: string): void => {
-    download(link, "download.mp4");
-    setSelectedItem(link);
-    console.error("Invalid URL:", link);
+  const [selectedItem, setSelectedItem] = useState<string>("");
+  const handleSelectedItem = (link: string | undefined): void => {
+    if (link) {
+      download(link, "video.mp4");
+    } else {
+      console.error("Invalid URL:", link);
+    }
   };
 
   return (
@@ -19,25 +19,29 @@ const Download = () => {
         Download Your Files
       </h1>
       <div>
-        <section className="grid grid-cols-4 gap-5 mt-10 ">
-          {data?.medias?.map((link, index) => (
+        <section className="flex items-center justify-center gap-5">
+          <section className="flex flex-col gap-5">
+            <h1> {data?.title}</h1>
+            <img
+              src={data?.thumbnail_url}
+              alt="thumbnail"
+              className="h-[200px]"
+            />
+          </section>
+          <section className="flex flex-col  gap-5">
             <section
-              key={index}
-              onClick={() => handleSelectedItem(link?.url)}
+              onClick={() => handleSelectedItem(data?.sd)}
               className="bg-white w-[180px] cursor-pointer rounded-lg text-center text-black h-fit p-5"
             >
-              {link?.quality}
-              {selectedItem === link?.url && (
-                <p className="text-red-500">
-                  {isInProgress ? (
-                    <p>Downloading file: {percentage}% </p>
-                  ) : (
-                    <p>Finished</p>
-                  )}
-                </p>
-              )}
+              Sd
             </section>
-          ))}
+            <section
+              onClick={() => handleSelectedItem(data?.hd)}
+              className="bg-white w-[180px] cursor-pointer rounded-lg text-center text-black h-fit p-5"
+            >
+              Hd
+            </section>
+          </section>
         </section>
       </div>
     </section>
