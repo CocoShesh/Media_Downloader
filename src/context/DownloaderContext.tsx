@@ -7,26 +7,18 @@ import {
   SetStateAction,
 } from "react";
 
-type DownloadLink = {
-  quality: string;
-  url: string;
-  extension: string;
-};
-
-interface DownloadItem {
+type MediaData = {
   title: string;
-  picture: string;
-  medias: DownloadLink[];
-  thumbnail: string;
+  thumbnail_url: string;
   sd: string;
   hd: string;
-}
+};
 
 type DownloaderContextType = {
   selectedType: string;
   setSelectedType: Dispatch<SetStateAction<string>>;
-  data: DownloadItem | null;
-  setData: Dispatch<SetStateAction<DownloadItem | null>>;
+  data: MediaData | null;
+  setData: Dispatch<SetStateAction<MediaData | null>>;
 };
 
 type DownloaderProviderProps = {
@@ -41,7 +33,7 @@ export const useDownloader = () => {
 
 export const DownloaderProvider = ({ children }: DownloaderProviderProps) => {
   const [selectedType, setSelectedType] = useState("");
-  const [data, setData] = useState<DownloadItem | null>(null);
+  const [data, setData] = useState<MediaData | null>(null);
 
   return (
     <DownloaderContext.Provider
