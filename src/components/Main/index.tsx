@@ -18,6 +18,7 @@ const MainContent = () => {
   const { setSelectedType, setData } = useDownloader();
   const [loading, setLoading] = useState<boolean>(false);
   const Navigate = useNavigate();
+
   const onSubmit: SubmitHandler<Inputs> = async data => {
     setSelectedType(data.selectedType);
 
