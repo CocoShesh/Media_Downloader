@@ -7,11 +7,31 @@ import {
   SetStateAction,
 } from "react";
 
-type MediaData = {
-  title: string;
-  thumbnail_url: string;
-  sd: string;
-  hd: string;
+type PhotoData = {
+  type: string;
+  url: string;
+};
+
+type VideoData = {
+  videoVariants: {
+    content_type: string;
+    url: string;
+    bitrate: number;
+  }[];
+};
+
+type UserData = {
+  description: string;
+  screen_name: string;
+  profile: string;
+};
+
+export type MediaData = {
+  user: UserData;
+  media: {
+    video: VideoData | null;
+    photo: PhotoData[] | null;
+  };
 };
 
 type DownloaderContextType = {
@@ -25,11 +45,11 @@ type DownloaderProviderProps = {
   children: ReactNode;
 };
 
-const DownloaderContext = createContext({} as DownloaderContextType);
+const DownloaderContext = createContext<DownloaderContextType>(
+  {} as DownloaderContextType
+);
 
-export const useDownloader = () => {
-  return useContext(DownloaderContext);
-};
+export const useDownloader = () => useContext(DownloaderContext);
 
 export const DownloaderProvider = ({ children }: DownloaderProviderProps) => {
   const [selectedType, setSelectedType] = useState("");
