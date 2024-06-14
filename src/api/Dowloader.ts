@@ -1,23 +1,31 @@
 import axios from "axios";
-const apiKey: string = import.meta.env.VITE_APP_X_RAPIDAPI_KEY as string;
 
-export const Downloader = async (url: string) => {
+const apiKey: string = import.meta.env.VITE_APP_X_RAPIDAPI_KEY as string;
+import { MediaData } from "../context/DownloaderContext";
+
+export const Downloader = async (url: string): Promise<MediaData> => {
   try {
     const options = {
-      method: "GET",
-      url: "https://facebook-video-and-reel-downloader.p.rapidapi.com/",
-      params: {
-        url: url,
-      },
+      method: "POST",
+      url: "https://twitter-downloader-download-twitter-videos-gifs-and-images.p.rapidapi.com/twidown",
       headers: {
-        "X-RapidAPI-Key": apiKey,
-        "X-RapidAPI-Host": "facebook-video-and-reel-downloader.p.rapidapi.com",
+        "x-rapidapi-key": apiKey,
+        "x-rapidapi-host":
+          "twitter-downloader-download-twitter-videos-gifs-and-images.p.rapidapi.com",
+        "Content-Type": "application/json",
+      },
+      data: {
+        url: url,
       },
     };
 
     const response = await axios.request(options);
-    return response.data;
+    console.log(response.data);
+
+    // Ensure response.data matches MediaData type
+    return response.data as MediaData;
   } catch (error) {
     console.error(error);
+    throw error; // Re-throw error after logging it
   }
 };
