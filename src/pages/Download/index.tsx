@@ -50,7 +50,7 @@ const Download = () => {
                       onClick={() =>
                         handleSelectedItem(video.url, `video_${index}.mp4`)
                       }
-                      className="absolute bottom-0 bg-orange-500 w-full h-12 text-xl text-white"
+                      className="absolute bottom-0 bg-orange-500 w-full h-12 text-xl text-white  rounded-b-md"
                     >
                       Download
                     </button>
@@ -68,7 +68,7 @@ const Download = () => {
                       onClick={() =>
                         handleSelectedItem(photo.url, `photo_${index}.png`)
                       }
-                      className="absolute bottom-0 bg-orange-500 w-full h-12 text-xl text-white"
+                      className="absolute bottom-0 bg-orange-500 w-full h-12 text-xl text-white  rounded-b-md"
                     >
                       Download
                     </button>
