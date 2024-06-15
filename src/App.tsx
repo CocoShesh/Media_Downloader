@@ -3,7 +3,7 @@
 import Header from "./components/Header";
 import MainContent from "./components/Main";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Download from "./pages/Download";
+import TwitterDownload from "./pages/TwitterDownload";
 
 function App() {
   // const { size, elapsed, percentage, download, cancel, error, isInProgress } =
@@ -21,7 +21,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<MainContent />} />
-            <Route path="/Download" element={<Download />} />
+            <Route path="/Download" element={<TwitterDownload />} />
           </Routes>
         </BrowserRouter>
       </main>
