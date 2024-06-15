@@ -19,14 +19,14 @@ export interface UserData {
   profile: string;
 }
 
-export type MediaData = {
+export interface MediaData {
   user: UserData;
   created_at: string;
   media: {
     video: VideoData | null;
     photo: PhotoData[] | null;
   };
-};
+}
 
 export type DownloaderContextType = {
   selectedType: string;
