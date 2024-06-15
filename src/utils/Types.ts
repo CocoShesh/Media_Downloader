@@ -5,13 +5,13 @@ export interface PhotoData {
   url: string;
 }
 
-export type VideoData = {
+export interface VideoData {
   videoVariants: {
     content_type: string;
     url: string;
     bitrate: number;
   }[];
-};
+}
 
 export type UserData = {
   description: string;
