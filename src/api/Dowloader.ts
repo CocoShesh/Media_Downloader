@@ -3,7 +3,7 @@ import axios from "axios";
 const apiKey: string = import.meta.env.VITE_APP_X_RAPIDAPI_KEY as string;
 import { MediaData } from "../context/DownloaderContext";
 
-export const Downloader = async (url: string): Promise<MediaData> => {
+export const TwitterDownloader = async (url: string): Promise<MediaData> => {
   try {
     const options = {
       method: "POST",
