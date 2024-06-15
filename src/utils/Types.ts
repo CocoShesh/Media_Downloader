@@ -13,11 +13,11 @@ export interface VideoData {
   }[];
 }
 
-export type UserData = {
+export interface UserData {
   description: string;
   screen_name: string;
   profile: string;
-};
+}
 
 export type MediaData = {
   user: UserData;
