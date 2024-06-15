@@ -28,6 +28,7 @@ type UserData = {
 
 export type MediaData = {
   user: UserData;
+  created_at: string;
   media: {
     video: VideoData | null;
     photo: PhotoData[] | null;
