@@ -11,7 +11,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <DownloaderProvider>
       <ThemeProvider>
         <App />
-      </ThemeProvider>{" "}
+      </ThemeProvider>
     </DownloaderProvider>
   </React.StrictMode>
 );
