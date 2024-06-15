@@ -1,19 +1,16 @@
 import { Dispatch, SetStateAction } from "react";
-
-export interface PhotoData {
+interface PhotoData {
   type: string;
   url: string;
 }
-
-export interface VideoData {
+interface VideoData {
   videoVariants: {
     content_type: string;
     url: string;
     bitrate: number;
   }[];
 }
-
-export interface UserData {
+interface UserData {
   description: string;
   screen_name: string;
   profile: string;
