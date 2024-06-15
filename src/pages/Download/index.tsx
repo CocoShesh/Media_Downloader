@@ -37,10 +37,7 @@ const Download = () => {
             {data?.media?.video && data.media.video.videoVariants.length > 0
               ? data.media.video.videoVariants.map((video, index) => (
                   <section className="relative" key={index}>
-                    <video
-                      className="h-[200px] w-[400px] object-cover"
-                      controls
-                    >
+                    <video className="h-[200px] w-full object-cover" controls>
                       <source src={video.url} type="video/mp4" />
                     </video>
                     <span className="absolute top-0 right-0 bg-white text-black px-3 py-1">
@@ -48,7 +45,12 @@ const Download = () => {
                     </span>
                     <button
                       onClick={() =>
-                        handleSelectedItem(video.url, `video_${index}.mp4`)
+                        handleSelectedItem(
+                          video.url,
+                          `${data.user.screen_name}_video_${getQualityLabel(
+                            video.bitrate
+                          )}.mp4`
+                        )
                       }
                       className="absolute bottom-0 bg-orange-500 w-full h-12 text-xl text-white  rounded-b-md"
                     >
@@ -66,7 +68,10 @@ const Download = () => {
                     />
                     <button
                       onClick={() =>
-                        handleSelectedItem(photo.url, `photo_${index}.png`)
+                        handleSelectedItem(
+                          photo.url,
+                          `${data.user.screen_name}_photo.png`
+                        )
                       }
                       className="absolute bottom-0 bg-orange-500 w-full h-12 text-xl text-white  rounded-b-md"
                     >
