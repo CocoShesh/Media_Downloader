@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Downloader } from "../../api/Dowloader";
+import { TwitterDownloader } from "../../api/Dowloader";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useDownloader } from "../../context/DownloaderContext";
 import { useNavigate } from "react-router-dom";
@@ -24,7 +24,7 @@ const MainContent = () => {
 
     try {
       setLoading(true);
-      const response = await Downloader(data.url);
+      const response = await TwitterDownloader(data.url);
       setData(response);
     } catch (error) {
       console.error(error);
