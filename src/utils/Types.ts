@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction } from "react";
 
-export type PhotoData = {
+export interface PhotoData {
   type: string;
   url: string;
-};
+}
 
 export type VideoData = {
   videoVariants: {
