@@ -28,9 +28,9 @@ export interface MediaData {
   };
 }
 
-export type DownloaderContextType = {
+export interface DownloaderContextType {
   selectedType: string;
   setSelectedType: Dispatch<SetStateAction<string>>;
   data: MediaData | null;
   setData: Dispatch<SetStateAction<MediaData | null>>;
-};
+}
