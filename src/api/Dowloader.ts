@@ -46,5 +46,6 @@ export const FacebookDownloader = async (url: string): Promise<MediaData> => {
     return response.data as MediaData;
   } catch (error) {
     console.error(error);
+    throw error;
   }
 };
