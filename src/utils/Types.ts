@@ -42,6 +42,8 @@ export interface DownloaderContextType {
   setInstaData: Dispatch<SetStateAction<InstgramData | null>>;
   setTiktokData: Dispatch<SetStateAction<TwitterData | null>>;
   tiktokData: TwitterData | null;
+  ytData: InstgramData | null;
+  setYtData: Dispatch<SetStateAction<InstgramData | null>>;
 }
 
 export interface FacebookData {
