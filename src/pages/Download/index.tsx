@@ -4,6 +4,7 @@ import InstagramDownload from "../InstagramDownload";
 import TiktokDownload from "../TiktokDownload";
 import TwitterDownload from "../TwitterDownload";
 import { useDownloader as useDownloaderContext } from "../../context/DownloaderContext";
+import YoutubeDownload from "../YoutubeDownload";
 
 type ComponentMap = {
   [key: string]: React.ComponentType;
@@ -13,6 +14,7 @@ const componentMap: ComponentMap = {
   Twitter: TwitterDownload,
   Tiktok: TiktokDownload,
   Instagram: InstagramDownload,
+  Youtube: YoutubeDownload,
 };
 
 const Download = () => {
