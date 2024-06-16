@@ -36,8 +36,8 @@ export interface DownloaderContextType {
   setData: Dispatch<SetStateAction<MediaData | null>>;
   fData: FacebookData | null;
   setFData: Dispatch<SetStateAction<FacebookData | null>>;
-  instaData: ImageItem | null;
-  setInstaData: Dispatch<SetStateAction<ImageItem | null>>;
+  instaData: InstgramData | null;
+  setInstaData: Dispatch<SetStateAction<InstgramData | null>>;
   setTiktokData: Dispatch<SetStateAction<TwitterData | null>>;
   tiktokData: TwitterData | null;
 }
@@ -59,13 +59,13 @@ export interface FacebookData {
   errors: string;
 }
 
-export interface ImageItem {
-  posts: {
-    type: string;
-    url: string;
-    thumbnail: string;
-  }[];
-}
+// export interface ImageItem {
+//   posts: {
+//     type: string;
+//     url: string;
+//     thumbnail: string;
+//   }[];
+// }
 
 export interface TwitterData {
   video: string;
@@ -73,4 +73,9 @@ export interface TwitterData {
   cover: string;
   description: string;
   OriginalWatermarkedVideo: string;
+}
+
+export interface InstgramData {
+  title: string;
+  images: string[];
 }
