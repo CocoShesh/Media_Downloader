@@ -4,6 +4,7 @@ import {
   FacebookDownloader,
   InstagramDownloader,
   TiktokDownloader,
+  YoutubeDownloader,
 } from "../../api/Dowloader";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useDownloader } from "../../context/DownloaderContext";
@@ -21,8 +22,14 @@ const MainContent = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
-  const { setSelectedType, setData, setFData, setInstaData, setTiktokData } =
-    useDownloader();
+  const {
+    setSelectedType,
+    setData,
+    setFData,
+    setInstaData,
+    setTiktokData,
+    setYtData,
+  } = useDownloader();
   const [loading, setLoading] = useState<boolean>(false);
   const Navigate = useNavigate();
 
@@ -51,6 +58,10 @@ const MainContent = () => {
           response = await TiktokDownloader(data.url);
           setTiktokData(response);
           break;
+        case "Youtube":
+          response = await YoutubeDownloader(data.url);
+          setYtData(response);
+          break;
         default:
           throw new Error("Unsupported platform");
       }
@@ -58,7 +69,7 @@ const MainContent = () => {
         response &&
         !response.error &&
         !response.errors &&
-        !response.success
+        response.success === true
       ) {
         Navigate("/Download");
       } else {
@@ -114,6 +125,7 @@ const MainContent = () => {
                 <option value="Instagram">Instagram</option>
                 <option value="Twitter">Twitter</option>
                 <option value="Tiktok">Tiktok</option>
+                <option value="Youtube">Youtube</option>
               </select>
               {errors.selectedType && (
                 <span className="text-[#ffd14c] absolute -top-14 left-8">
