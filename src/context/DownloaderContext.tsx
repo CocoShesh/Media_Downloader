@@ -23,6 +23,7 @@ export const DownloaderProvider = ({ children }: DownloaderProviderProps) => {
   const [fData, setFData] = useState<FacebookData | null>(null);
   const [instaData, setInstaData] = useState<InstgramData | null>(null);
   const [tiktokData, setTiktokData] = useState<TwitterData | null>(null);
+  const [ytData, setYtData] = useState<InstgramData | null>(null);
   return (
     <DownloaderContext.Provider
       value={{
@@ -36,6 +37,8 @@ export const DownloaderProvider = ({ children }: DownloaderProviderProps) => {
         setInstaData,
         setTiktokData,
         tiktokData,
+        setYtData,
+        ytData,
       }}
     >
       {children}
