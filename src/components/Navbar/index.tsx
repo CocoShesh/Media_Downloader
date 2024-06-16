@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <>
       <ul className="flex items-center  justify-center gap-5 font-semibold  dark:text-white cursor-pointer text-lg text-black w-full max-xl:hidden">
-        <Link to="/">
+        {/* <Link to="/">
           <li className="hover:text-[#e05f1e]">Twitter</li>{" "}
         </Link>
         <Link to="/Facebook">
@@ -14,7 +14,7 @@ const Navbar = () => {
         </Link>
         <Link to="/Tiktok">
           <li className="hover:text-[#e05f1e]">Tiktok</li>
-        </Link>
+        </Link> */}
       </ul>
     </>
   );
