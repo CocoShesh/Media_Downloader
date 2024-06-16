@@ -21,7 +21,9 @@ interface UserData {
 export interface MediaData {
   user: UserData;
   error: string;
-  errors: string;
+  errors: {
+    message: string;
+  };
   created_at: string;
   media: {
     video: VideoData | null;
@@ -55,17 +57,7 @@ export interface FacebookData {
     type: string;
     image: string;
   }[];
-  error: string;
-  errors: string;
 }
-
-// export interface ImageItem {
-//   posts: {
-//     type: string;
-//     url: string;
-//     thumbnail: string;
-//   }[];
-// }
 
 export interface TwitterData {
   video: string;
@@ -73,6 +65,7 @@ export interface TwitterData {
   cover: string;
   description: string;
   OriginalWatermarkedVideo: string;
+  errors: string;
 }
 
 export interface InstgramData {
@@ -83,4 +76,5 @@ export interface InstgramData {
     link: string;
   }[];
   picture: string;
+  success: boolean;
 }
