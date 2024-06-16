@@ -5,7 +5,8 @@ import TwitterDownload from "./pages/TwitterDownload";
 import FacebookDownload from "./pages/FacebookDownload";
 import InstagramDownload from "./pages/InstagramDownload";
 import TiktokDownload from "./pages/TiktokDownload";
-
+import { Toaster } from "react-hot-toast";
+import Download from "./pages/Download";
 function App() {
   return (
     <>
@@ -14,12 +15,14 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<MainContent />} />
-            <Route path="/Download" element={<TwitterDownload />} />
+            <Route path="/Download" element={<Download />} />
             <Route path="/Facebook" element={<FacebookDownload />} />
             <Route path="/Instagram" element={<InstagramDownload />} />
             <Route path="/Tiktok" element={<TiktokDownload />} />
+            <Route path="/Twitter" element={<TwitterDownload />} />
           </Routes>
         </main>
+        <Toaster position="top-right" />
       </BrowserRouter>
     </>
   );
