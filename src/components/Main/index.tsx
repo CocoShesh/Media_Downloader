@@ -44,38 +44,51 @@ const MainContent = () => {
       switch (data.selectedType) {
         case "Facebook":
           response = await FacebookDownloader(data.url);
-          setFData(response);
+          if (response.error) {
+            toast.error(response.error);
+          } else {
+            setFData(response);
+            Navigate("/Download");
+          }
           break;
         case "Twitter":
           response = await TwitterDownloader(data.url);
-          setData(response);
+          if (response.error || response.errors) {
+            toast.error("URL is invalid or an error occurred.");
+          } else {
+            setData(response);
+            Navigate("/Download");
+          }
           break;
         case "Instagram":
           response = await InstagramDownloader(data.url);
-          setInstaData(response);
+          if (response.success) {
+            setInstaData(response);
+            Navigate("/Download");
+          } else {
+            toast.error(response.message);
+          }
           break;
         case "Tiktok":
           response = await TiktokDownloader(data.url);
-          setTiktokData(response);
+          if (response.error || response.errors) {
+            toast.error("URL is invalid or an error occurred.");
+          } else {
+            setTiktokData(response);
+            Navigate("/Download");
+          }
           break;
         case "Youtube":
           response = await YoutubeDownloader(data.url);
-          setYtData(response);
+          if (response.success) {
+            setYtData(response);
+            Navigate("/Download");
+          } else {
+            toast.error(response.message);
+          }
           break;
         default:
           throw new Error("Unsupported platform");
-      }
-      if (
-        response &&
-        !response.error &&
-        !response.errors &&
-        response.success === true
-      ) {
-        Navigate("/Download");
-      } else {
-        toast.error(
-          response.error || response.errors.message || "Url is invalid"
-        );
       }
     } catch (error) {
       toast.error("An error occurred while processing your request.");
