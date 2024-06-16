@@ -9,7 +9,7 @@ const YoutubeDownload = () => {
     <>
       <section className="flex items-center justify-center gap-5">
         <div className=" flex-col gap-5 grid grid-cols-2 mt-5">
-          {ytData?.links.map((video, index) => {
+          {ytData?.links?.map((video, index) => {
             return (
               <div key={index} className="relative">
                 <img
@@ -21,10 +21,11 @@ const YoutubeDownload = () => {
                 </span>
                 <button
                   onClick={() => {
-                    const extension = video.quality === "audio" ? "mp3" : "mp4";
+                    const extension =
+                      video?.quality === "audio" ? "mp3" : "mp4";
                     handleSelectedItem(
                       download,
-                      `${video.link}`,
+                      `${video?.link}`,
                       `${ytData?.title}.${extension}`
                     );
                   }}
