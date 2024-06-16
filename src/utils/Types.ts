@@ -78,4 +78,9 @@ export interface TwitterData {
 export interface InstgramData {
   title: string;
   images: string[];
+  links: {
+    quality: string;
+    link: string;
+  }[];
+  picture: string;
 }
