@@ -54,11 +54,16 @@ const MainContent = () => {
         default:
           throw new Error("Unsupported platform");
       }
-      if (response && !response.error && !response.errors) {
+      if (
+        response &&
+        !response.error &&
+        !response.errors &&
+        !response.success
+      ) {
         Navigate("/Download");
       } else {
         toast.error(
-          response.error || response.errors || "Unknown error occurred"
+          response.error || response.errors.message || "Url is invalid"
         );
       }
     } catch (error) {
