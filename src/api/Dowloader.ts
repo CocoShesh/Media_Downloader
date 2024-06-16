@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiKey: string = import.meta.env.VITE_APP_X_RAPIDAPI_KEY as string;
-import { MediaData, FacebookData, ImageItem } from "../utils/Types";
+import { MediaData, FacebookData } from "../utils/Types";
 
 export const TwitterDownloader = async (url: string): Promise<MediaData> => {
   try {
@@ -56,15 +56,13 @@ export const InstagramDownloader = async (url: string) => {
   try {
     const options = {
       method: "GET",
-      url: "https://ig-downloader-instagram-downloader.p.rapidapi.com/fetch",
+      url: "https://social-media-video-downloader.p.rapidapi.com/smvd/get/instagram",
       params: {
-        key: "dl",
-        downloader: "public",
         url: url,
       },
       headers: {
         "x-rapidapi-key": apiKey,
-        "x-rapidapi-host": "ig-downloader-instagram-downloader.p.rapidapi.com",
+        "x-rapidapi-host": "social-media-video-downloader.p.rapidapi.com",
       },
     };
 
