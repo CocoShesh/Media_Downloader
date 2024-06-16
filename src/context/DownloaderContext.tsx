@@ -3,7 +3,7 @@ import {
   MediaData,
   DownloaderContextType,
   FacebookData,
-  ImageItem,
+  InstgramData,
   TwitterData,
 } from "../utils/Types";
 
@@ -21,7 +21,7 @@ export const DownloaderProvider = ({ children }: DownloaderProviderProps) => {
   const [selectedType, setSelectedType] = useState("");
   const [data, setData] = useState<MediaData | null>(null);
   const [fData, setFData] = useState<FacebookData | null>(null);
-  const [instaData, setInstaData] = useState<ImageItem | null>(null);
+  const [instaData, setInstaData] = useState<InstgramData | null>(null);
   const [tiktokData, setTiktokData] = useState<TwitterData | null>(null);
   return (
     <DownloaderContext.Provider
