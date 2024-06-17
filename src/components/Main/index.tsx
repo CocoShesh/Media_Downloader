@@ -8,7 +8,7 @@ import {
   ThreadsDownloader,
   SpotifyDownloader,
 } from "../../api/Dowloader";
-import { useForm, SubmitHandler, set } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { useDownloader } from "../../context/DownloaderContext";
 import { useNavigate } from "react-router-dom";
 import { PiLinkSimpleBold } from "react-icons/pi";

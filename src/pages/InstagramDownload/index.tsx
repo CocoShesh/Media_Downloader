@@ -10,7 +10,7 @@ const InstagramDownload = () => {
       <div className=" flex-col gap-5 grid grid-cols-2 mt-5">
         {instaData?.images &&
           instaData?.images?.length > 0 &&
-          instaData?.images.map((image, index) => {
+          instaData?.images?.map((image, index) => {
             return (
               <div key={index} className="relative">
                 <img
