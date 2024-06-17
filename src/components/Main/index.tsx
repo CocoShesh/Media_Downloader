@@ -100,7 +100,7 @@ const MainContent = () => {
 
   return (
     <>
-      <section className="h-[500px] card flex flex-col items-center justify-center w-full px-64  2xl:w-[1500px] max-lg:px-5  mt-5 rounded-2xl ">
+      <section className="h-[500px] card dark:bg-transparent flex flex-col items-center justify-center w-full px-64  2xl:w-[1500px] max-lg:px-5  mt-5 rounded-2xl ">
         <section className="w-fit px-7 py-1 h-8 rounded-2xl mb-5 bg-white text-black">
           Best in industry
         </section>
@@ -125,7 +125,7 @@ const MainContent = () => {
                 className="w-full h-full  max-md:h-10 max-md:rounded-lg bg-[#f2f3f6] rounded-full px-10 placeholder:text-black  focus:outline-[#230056]"
                 {...register("url", { required: "This field is required" })}
               />
-              <PiLinkSimpleBold className="absolute top-3 left-3 text-xl" />
+              <PiLinkSimpleBold className="absolute top-4 max-md:top-3 left-3 text-xl" />
             </section>
             {errors.url && (
               <span className="text-[#ffd14c] absolute -top-6 left-8">
@@ -149,7 +149,7 @@ const MainContent = () => {
                 <option value="Youtube">Youtube</option>
               </select>
               {errors.selectedType && (
-                <span className="text-[#ffd14c] absolute -top-14 left-8">
+                <span className="text-[#ffd14c] absolute w-[200px] -top-8 left-2">
                   {errors.selectedType.message}
                 </span>
               )}
