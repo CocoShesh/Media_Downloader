@@ -15,8 +15,6 @@ export interface DownloaderContextType {
   setYtData: Dispatch<SetStateAction<InstgramData | null>>;
   threadsData: ThreadsData | null;
   setThreadsData: Dispatch<SetStateAction<ThreadsData | null>>;
-  spotifyData: SpotifyData | null;
-  setSpotifyData: Dispatch<SetStateAction<SpotifyData | null>>;
 }
 
 interface PhotoData {
@@ -93,10 +91,4 @@ export interface ThreadsData {
       download_url: string;
     }[];
   };
-}
-
-export interface SpotifyData {
-  title: string;
-  cover: string;
-  download_link: string;
 }
