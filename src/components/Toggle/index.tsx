@@ -1,5 +1,5 @@
 import { useTheme } from "../../context/ThemeContext";
-import { IoMenu } from "react-icons/io5";
+// import { IoMenu } from "react-icons/io5";
 const Toggle = () => {
   const { handleChangeTheme, theme } = useTheme();
   return (
@@ -12,7 +12,7 @@ const Toggle = () => {
           }`}
         ></div>
       </section>
-      <IoMenu className="max-xl:visible xl:hidden text-3xl text-black cursor-pointer dark:text-white" />
+      {/* <IoMenu className="max-xl:visible xl:hidden text-3xl text-black cursor-pointer dark:text-white" /> */}
     </section>
   );
 };
