@@ -6,7 +6,6 @@ import {
   InstgramData,
   TwitterData,
   ThreadsData,
-  SpotifyData,
 } from "../utils/Types";
 
 type DownloaderProviderProps = {
@@ -27,9 +26,7 @@ export const DownloaderProvider = ({ children }: DownloaderProviderProps) => {
   const [tiktokData, setTiktokData] = useState<TwitterData | null>(null);
   const [ytData, setYtData] = useState<InstgramData | null>(null);
   const [threadsData, setThreadsData] = useState<ThreadsData | null>(null);
-  const [spotifyData, setSpotifyData] = useState<SpotifyData | null>(null);
 
-  console.log("spotify", spotifyData);
   return (
     <DownloaderContext.Provider
       value={{
@@ -47,8 +44,6 @@ export const DownloaderProvider = ({ children }: DownloaderProviderProps) => {
         ytData,
         setThreadsData,
         threadsData,
-        setSpotifyData,
-        spotifyData,
       }}
     >
       {children}
