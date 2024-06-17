@@ -7,6 +7,7 @@ import InstagramDownload from "./pages/InstagramDownload";
 import TiktokDownload from "./pages/TiktokDownload";
 import { Toaster } from "react-hot-toast";
 import Download from "./pages/Download";
+import Footer from "./components/Footer";
 function App() {
   return (
     <>
@@ -23,6 +24,7 @@ function App() {
           </Routes>
         </main>
         <Toaster position="top-right" />
+        <Footer />
       </BrowserRouter>
     </>
   );
