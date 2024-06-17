@@ -5,8 +5,10 @@ import {
   InstagramDownloader,
   TiktokDownloader,
   YoutubeDownloader,
+  ThreadsDownloader,
+  SpotifyDownloader,
 } from "../../api/Dowloader";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler, set } from "react-hook-form";
 import { useDownloader } from "../../context/DownloaderContext";
 import { useNavigate } from "react-router-dom";
 import { PiLinkSimpleBold } from "react-icons/pi";
@@ -29,6 +31,8 @@ const MainContent = () => {
     setInstaData,
     setTiktokData,
     setYtData,
+    setThreadsData,
+    setSpotifyData,
   } = useDownloader();
   const [loading, setLoading] = useState<boolean>(false);
   const Navigate = useNavigate();
@@ -44,51 +48,45 @@ const MainContent = () => {
       switch (data.selectedType) {
         case "Facebook":
           response = await FacebookDownloader(data.url);
-          if (response.error) {
-            toast.error(response.error);
-          } else {
-            setFData(response);
-            Navigate("/Download");
-          }
+          setFData(response);
           break;
         case "Twitter":
           response = await TwitterDownloader(data.url);
-          if (response.error || response.errors) {
-            toast.error("URL is invalid or an error occurred.");
-          } else {
-            setData(response);
-            Navigate("/Download");
-          }
+          setData(response);
           break;
         case "Instagram":
           response = await InstagramDownloader(data.url);
-          if (response.success) {
-            setInstaData(response);
-            Navigate("/Download");
-          } else {
-            toast.error(response.message);
-          }
+          setInstaData(response);
           break;
         case "Tiktok":
           response = await TiktokDownloader(data.url);
-          if (response.error || response.errors) {
-            toast.error("URL is invalid or an error occurred.");
-          } else {
-            setTiktokData(response);
-            Navigate("/Download");
-          }
+          setTiktokData(response);
           break;
         case "Youtube":
           response = await YoutubeDownloader(data.url);
-          if (response.success) {
-            setYtData(response);
-            Navigate("/Download");
-          } else {
-            toast.error(response.message);
-          }
+          setYtData(response);
+          break;
+        case "Threads":
+          response = await ThreadsDownloader(data.url);
+          setThreadsData(response);
+          break;
+        case "Spotify":
+          response = await SpotifyDownloader(data.url);
+          setSpotifyData(response);
           break;
         default:
           throw new Error("Unsupported platform");
+      }
+
+      if (
+        response.error ||
+        response.errors ||
+        response.success === false ||
+        response.result === "Failed Download !"
+      ) {
+        toast.error(response.error || response.message || "An error occurred.");
+      } else {
+        Navigate("/Download");
       }
     } catch (error) {
       toast.error("An error occurred while processing your request.");
@@ -144,9 +142,11 @@ const MainContent = () => {
                 </option>
                 <option value="Facebook">Facebook</option>
                 <option value="Instagram">Instagram</option>
+                <option value="Threads">Threads</option>
                 <option value="Twitter">Twitter</option>
                 <option value="Tiktok">Tiktok</option>
                 <option value="Youtube">Youtube</option>
+                <option value="Spotify">Spotify</option>
               </select>
               {errors.selectedType && (
                 <span className="text-[#ffd14c] absolute w-[200px] -top-8 left-2">
