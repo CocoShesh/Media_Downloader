@@ -6,7 +6,6 @@ import {
   TiktokDownloader,
   YoutubeDownloader,
   ThreadsDownloader,
-  SpotifyDownloader,
 } from "../../api/Dowloader";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useDownloader } from "../../context/DownloaderContext";
@@ -32,7 +31,6 @@ const MainContent = () => {
     setTiktokData,
     setYtData,
     setThreadsData,
-    setSpotifyData,
   } = useDownloader();
   const [loading, setLoading] = useState<boolean>(false);
   const Navigate = useNavigate();
@@ -70,10 +68,7 @@ const MainContent = () => {
           response = await ThreadsDownloader(data.url);
           setThreadsData(response);
           break;
-        case "Spotify":
-          response = await SpotifyDownloader(data.url);
-          setSpotifyData(response);
-          break;
+
         default:
           throw new Error("Unsupported platform");
       }
@@ -124,18 +119,21 @@ const MainContent = () => {
                 {...register("url", { required: "This field is required" })}
               />
               <PiLinkSimpleBold className="absolute top-4 max-md:top-3 left-3 text-xl" />
+
+              {errors.url && (
+                <span className="text-[#ffd14c] absolute -top-8  max-md:top-full left-4">
+                  {errors.url.message}
+                </span>
+              )}
             </section>
-            {errors.url && (
-              <span className="text-[#ffd14c] absolute -top-6 left-8">
-                {errors.url.message}
-              </span>
-            )}
             <section className="relative ">
               <select
                 {...register("selectedType", {
                   required: "This field is required",
                 })}
-                className="select select-bordered rounded-full max-md:w-full bg-[#f2f3f6]  max-md:rounded-lg"
+                className={`select select-bordered rounded-full max-md:w-full bg-[#f2f3f6] ${
+                  errors.url && "max-md:mt-3"
+                } max-md:rounded-lg`}
               >
                 <option value="" disabled selected>
                   What Site?
@@ -149,14 +147,16 @@ const MainContent = () => {
                 <option value="Spotify">Spotify</option>
               </select>
               {errors.selectedType && (
-                <span className="text-[#ffd14c] absolute w-[200px] -top-8 left-2">
+                <span className="text-[#ffd14c] absolute w-[200px]  -top-8 max-md:top-full left-2">
                   {errors.selectedType.message}
                 </span>
               )}
             </section>
             <button
               type="submit"
-              className="w-[200px] h-full  max-md:h-10 max-md:rounded-lg max-md:w-full  rounded-full bg-[#e47231] text-white "
+              className={` w-[200px] h-full ${
+                errors.selectedType && "max-md:mt-5"
+              } max-md:h-10 max-md:rounded-lg max-md:w-full  rounded-full bg-[#e47231] text-white `}
             >
               DOWNLOAD
             </button>
