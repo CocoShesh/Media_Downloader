@@ -12,6 +12,7 @@ import { useDownloader } from "../../context/DownloaderContext";
 import { useNavigate } from "react-router-dom";
 import { PiLinkSimpleBold } from "react-icons/pi";
 import toast from "react-hot-toast";
+import Loading from "../Loading";
 type Inputs = {
   url: string;
   selectedType: string;
@@ -79,7 +80,10 @@ const MainContent = () => {
         response.success === false ||
         response.result === "Failed Download !"
       ) {
-        toast.error(response.error || response.message || "An error occurred.");
+        toast.error(
+          response.error ||
+            "An error occurred while downloading. Please try again."
+        );
       } else {
         Navigate("/Download");
       }
@@ -103,14 +107,7 @@ const MainContent = () => {
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <section className="max-md:h-fit h-16  max-md:rounded-lg max-md:p-5 mt-10 w-[700px]  max-md:w-full relative flex  max-md:flex-col rounded-full bg-white p-2  gap-3 text-black">
-            {loading && (
-              <div className="text-white absolute bg-[#f2f3f6]   z-10 w-full flex max-md:rounded-md  flex-col items-center justify-center  h-full rounded-full top-0 left-0  ">
-                <div className="loader  ">
-                  <span>SocDownloader</span>
-                  <span>SocDownloader</span>
-                </div>
-              </div>
-            )}
+            {loading && <Loading />}
             <section className="relative w-full">
               <input
                 type="text"
