@@ -1,5 +1,24 @@
 import { Dispatch, SetStateAction } from "react";
 
+export interface DownloaderContextType {
+  selectedType: string;
+  setSelectedType: Dispatch<SetStateAction<string>>;
+  data: MediaData | null;
+  setData: Dispatch<SetStateAction<MediaData | null>>;
+  fData: FacebookData | null;
+  setFData: Dispatch<SetStateAction<FacebookData | null>>;
+  instaData: InstgramData | null;
+  setInstaData: Dispatch<SetStateAction<InstgramData | null>>;
+  setTiktokData: Dispatch<SetStateAction<TwitterData | null>>;
+  tiktokData: TwitterData | null;
+  ytData: InstgramData | null;
+  setYtData: Dispatch<SetStateAction<InstgramData | null>>;
+  threadsData: ThreadsData | null;
+  setThreadsData: Dispatch<SetStateAction<ThreadsData | null>>;
+  spotifyData: SpotifyData | null;
+  setSpotifyData: Dispatch<SetStateAction<SpotifyData | null>>;
+}
+
 interface PhotoData {
   type: string;
   url: string;
@@ -29,21 +48,6 @@ export interface MediaData {
     video: VideoData | null;
     photo: PhotoData[] | null;
   };
-}
-
-export interface DownloaderContextType {
-  selectedType: string;
-  setSelectedType: Dispatch<SetStateAction<string>>;
-  data: MediaData | null;
-  setData: Dispatch<SetStateAction<MediaData | null>>;
-  fData: FacebookData | null;
-  setFData: Dispatch<SetStateAction<FacebookData | null>>;
-  instaData: InstgramData | null;
-  setInstaData: Dispatch<SetStateAction<InstgramData | null>>;
-  setTiktokData: Dispatch<SetStateAction<TwitterData | null>>;
-  tiktokData: TwitterData | null;
-  ytData: InstgramData | null;
-  setYtData: Dispatch<SetStateAction<InstgramData | null>>;
 }
 
 export interface FacebookData {
@@ -79,4 +83,20 @@ export interface InstgramData {
   }[];
   picture: string;
   success: boolean;
+}
+
+export interface ThreadsData {
+  creator: string;
+  result: {
+    image_urls: string[];
+    video_urls: {
+      download_url: string;
+    }[];
+  };
+}
+
+export interface SpotifyData {
+  title: string;
+  cover: string;
+  download_link: string;
 }
