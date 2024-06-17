@@ -1,4 +1,3 @@
-import Navbar from "../Navbar";
 import Toggle from "../Toggle";
 const Header = () => {
   return (
@@ -11,7 +10,6 @@ const Header = () => {
             </h1>{" "}
           </a>
         </section>
-        <Navbar />
         <Toggle />
       </header>
     </>
