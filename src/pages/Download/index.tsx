@@ -23,7 +23,7 @@ const Download = () => {
 
   return (
     <>
-      <section className="h-fit py-10 card flex flex-col items-center justify-center w-full px-64 2xl:w-[1500px] max-lg:px-5 mt-5 rounded-2xl">
+      <section className="h-fit py-10 card dark:bg-transparent flex flex-col items-center justify-center w-full px-64 2xl:w-[1500px] max-lg:px-5 mt-5 rounded-2xl">
         <h1 className="text-white text-5xl w-[700px] max-md:w-full text-center max-sm:text-4xl">
           Download Your Files
         </h1>
