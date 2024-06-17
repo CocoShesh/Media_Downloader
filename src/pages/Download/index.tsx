@@ -1,12 +1,11 @@
 import React from "react";
+import { useDownloader as useDownloaderContext } from "../../context/DownloaderContext";
 import FacebookDownload from "../FacebookDownload";
 import InstagramDownload from "../InstagramDownload";
 import TiktokDownload from "../TiktokDownload";
 import TwitterDownload from "../TwitterDownload";
-import { useDownloader as useDownloaderContext } from "../../context/DownloaderContext";
 import YoutubeDownload from "../YoutubeDownload";
 import ThreadsDownload from "../ThreadsDownload";
-import SpotifyDownload from "../SpotifyDownload";
 
 type ComponentMap = {
   [key: string]: React.ComponentType;
@@ -18,7 +17,6 @@ const componentMap: ComponentMap = {
   Instagram: InstagramDownload,
   Youtube: YoutubeDownload,
   Threads: ThreadsDownload,
-  Spotify: SpotifyDownload,
 };
 
 const Download = () => {
