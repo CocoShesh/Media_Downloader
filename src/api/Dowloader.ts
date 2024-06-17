@@ -1,5 +1,4 @@
 import axios from "axios";
-
 const apiKey: string = import.meta.env.VITE_APP_X_RAPIDAPI_KEY as string;
 
 export const TwitterDownloader = async (url: string) => {
@@ -128,28 +127,6 @@ export const ThreadsDownloader = async (url: string) => {
         "x-rapidapi-host": "all-media-downloader1.p.rapidapi.com",
       },
       data: data,
-    };
-
-    const response = await axios.request(options);
-    return response.data;
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
-};
-
-export const SpotifyDownloader = async (url: string) => {
-  try {
-    const options = {
-      method: "GET",
-      url: "https://spotify-downloader6.p.rapidapi.com/spotify",
-      params: {
-        spotifyUrl: url,
-      },
-      headers: {
-        "x-rapidapi-key": apiKey,
-        "x-rapidapi-host": "spotify-downloader6.p.rapidapi.com",
-      },
     };
 
     const response = await axios.request(options);
