@@ -1,4 +1,10 @@
-import { createContext, useState, useContext, ReactNode } from "react";
+import {
+  createContext,
+  useState,
+  useContext,
+  ReactNode,
+  useEffect,
+} from "react";
 
 type ThemeContextType = {
   theme: boolean;
@@ -17,10 +23,23 @@ export const useTheme = () => {
 };
 
 export const ThemeProvider = ({ children }: UserProviderProps) => {
-  const [theme, setTheme] = useState(false);
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem("theme");
+    return savedTheme === "dark";
+  });
+
+  useEffect(() => {
+    if (theme) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [theme]);
 
   const handleChangeTheme = (): void => {
-    setTheme(document.documentElement.classList.toggle("dark"));
+    setTheme(prevTheme => !prevTheme);
   };
   return (
     <ThemeContext.Provider value={{ theme, setTheme, handleChangeTheme }}>
