@@ -7,7 +7,7 @@ export const TwitterDownloader = async (url: string) => {
       method: "POST",
       url: "https://twitter-downloader-download-twitter-videos-gifs-and-images.p.rapidapi.com/twidown",
       headers: {
-        "x-rapidapi-key": "d278caefa0msh022d8fe2a4badc3p1fa4dcjsnf8c21f6e118b",
+        "x-rapidapi-key": "7fa3c8b466msh18719e955dc8cb6p1604aejsn6a5d8d041ad4",
         "x-rapidapi-host":
           "twitter-downloader-download-twitter-videos-gifs-and-images.p.rapidapi.com",
         "Content-Type": "application/json",
