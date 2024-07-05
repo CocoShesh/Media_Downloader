@@ -6,6 +6,7 @@ import TiktokDownload from "../TiktokDownload";
 import TwitterDownload from "../TwitterDownload";
 import YoutubeDownload from "../YoutubeDownload";
 import ThreadsDownload from "../ThreadsDownload";
+import { Navigate } from "react-router-dom";
 
 type ComponentMap = {
   [key: string]: React.ComponentType;
@@ -29,7 +30,7 @@ const Download = () => {
         <h1 className="text-white text-5xl w-[700px] max-md:w-full text-center max-sm:text-4xl">
           Download Your Files
         </h1>
-        {SelectedComponent && <SelectedComponent />}{" "}
+        {SelectedComponent ? <SelectedComponent /> : <Navigate to="/" />}{" "}
       </section>
     </>
   );
