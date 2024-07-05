@@ -27,6 +27,7 @@ export const DownloaderProvider = ({ children }: DownloaderProviderProps) => {
   const [ytData, setYtData] = useState<InstgramData | null>(null);
   const [threadsData, setThreadsData] = useState<ThreadsData | null>(null);
 
+  console.log("facebook data", fData);
   return (
     <DownloaderContext.Provider
       value={{
