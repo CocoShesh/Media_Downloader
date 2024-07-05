@@ -1,10 +1,12 @@
 import { useDownloader as useDownloaderContext } from "../../context/DownloaderContext";
 import useDownloader from "react-use-downloader";
 import { handleSelectedItem } from "../../utils/LinkUtils";
-
+import { useState } from "react";
 const YoutubeDownload = () => {
   const { ytData } = useDownloaderContext();
-  const { download } = useDownloader();
+  const { download, percentage } = useDownloader();
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
   return (
     <>
       <section className="flex items-center justify-center gap-5">
@@ -21,6 +23,7 @@ const YoutubeDownload = () => {
                 </span>
                 <button
                   onClick={() => {
+                    setSelectedIndex(index);
                     const extension =
                       video?.quality === "audio" ? "mp3" : "mp4";
                     handleSelectedItem(
@@ -33,6 +36,20 @@ const YoutubeDownload = () => {
                 >
                   Download
                 </button>
+                {selectedIndex === index && (
+                  <span className="absolute bottom-14 left-1 text-white text-lg ">
+                    {" "}
+                    Percentage
+                  </span>
+                )}
+                {selectedIndex === index && (
+                  <progress
+                    className="absolute bottom-10 w-full left-0 "
+                    id="file"
+                    value={percentage}
+                    max="100"
+                  />
+                )}
               </div>
             );
           })}
