@@ -34,7 +34,9 @@ const FacebookDownload = () => {
                 }}
                 className="absolute bottom-0 bg-orange-500 w-full h-12 text-xl text-white rounded-b-md"
               >
-                {isInProgress ? "Downloading " : "Download"}
+                {mediaIndex === index && isInProgress
+                  ? "Downloading "
+                  : "Download"}
               </button>
               {mediaIndex === index && isInProgress && (
                 <>
