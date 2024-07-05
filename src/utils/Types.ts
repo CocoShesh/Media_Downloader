@@ -87,7 +87,7 @@ export interface ThreadsData {
   creator: string;
   result: {
     image_urls: string[];
-    video_urls: {
+    video_urls?: {
       download_url: string;
     }[];
   };
