@@ -17,6 +17,8 @@ export interface DownloaderContextType {
   setThreadsData: Dispatch<SetStateAction<ThreadsData | null>>;
   spotifyData: SpotifyData | null;
   setSpotifyData: Dispatch<SetStateAction<SpotifyData | null>>;
+  redditData: RedditData | null;
+  setRedditData: Dispatch<SetStateAction<RedditData | null>>;
 }
 
 interface PhotoData {
@@ -118,4 +120,15 @@ export interface LinkedinData {
   name: string;
   contentUrl: string;
   articleBody?: string;
+}
+
+export interface RedditData {
+  title: string;
+  thumbnail: string;
+  medias: {
+    type: string;
+    format: string;
+    url: string;
+    extension: string;
+  }[];
 }
