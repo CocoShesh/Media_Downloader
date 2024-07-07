@@ -7,6 +7,7 @@ import {
   TwitterData,
   ThreadsData,
   SpotifyData,
+  LinkedinData,
 } from "../utils/Types";
 
 type DownloaderProviderProps = {
@@ -25,11 +26,10 @@ export const DownloaderProvider = ({ children }: DownloaderProviderProps) => {
   const [fData, setFData] = useState<FacebookData | null>(null);
   const [instaData, setInstaData] = useState<InstgramData | null>(null);
   const [tiktokData, setTiktokData] = useState<TwitterData | null>(null);
-  // const [ytData, setYtData] = useState<InstgramData | null>(null);
+  const [linkData, setLinkData] = useState<LinkedinData | null>(null);
   const [threadsData, setThreadsData] = useState<ThreadsData | null>(null);
   const [spotifyData, setSpotifyData] = useState<SpotifyData | null>(null);
 
-  console.log("this is spotifyData", spotifyData);
   return (
     <DownloaderContext.Provider
       value={{
@@ -43,8 +43,8 @@ export const DownloaderProvider = ({ children }: DownloaderProviderProps) => {
         setInstaData,
         setTiktokData,
         tiktokData,
-        // setYtData,
-        // ytData,
+        setLinkData,
+        linkData,
         setThreadsData,
         threadsData,
         setSpotifyData,
