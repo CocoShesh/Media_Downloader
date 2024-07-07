@@ -88,11 +88,13 @@ const MainContent = () => {
       if (
         response.error ||
         response.errors ||
+        response.error === true ||
         response.success === false ||
         response.result === "Failed Download !"
       ) {
         toast.error(
           response.error ||
+            response.message ||
             "An error occurred while downloading. Please try again."
         );
       } else {
