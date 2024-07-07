@@ -8,6 +8,7 @@ import SpotifyDownload from "../SpotifyDownload";
 import ThreadsDownload from "../ThreadsDownload";
 import { Navigate } from "react-router-dom";
 import LinkedinDownload from "../LinkedinDownload";
+import RedditDownload from "../RedditDownload";
 
 type ComponentMap = {
   [key: string]: React.ComponentType;
@@ -20,6 +21,7 @@ const componentMap: ComponentMap = {
   Spotify: SpotifyDownload,
   Threads: ThreadsDownload,
   Linkedin: LinkedinDownload,
+  Reddit: RedditDownload,
 };
 
 const Download = () => {
