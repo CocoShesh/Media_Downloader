@@ -11,7 +11,7 @@ const FacebookDownload = () => {
   return (
     <>
       <section className="flex items-center justify-center gap-5">
-        <section className="flex flex-col gap-5 ">
+        <section className="flex flex-col gap-5 w-[300px] ">
           <h1 className="text-center mt-5"> {fData?.title}</h1>
 
           {fData?.media.map((media, index) => (
@@ -27,7 +27,7 @@ const FacebookDownload = () => {
                   handleSelectedItem(
                     download,
                     media.hd_url || media.sd_url || media.image,
-                    `${fData.title}_${fData?.title}.${
+                    `${fData.title}_${Date.now()}.${
                       media.type === "Photo" ? "png" : "mp4"
                     }`
                   );
