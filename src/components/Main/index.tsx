@@ -7,6 +7,7 @@ import {
   SpotifyDownloader,
   ThreadsDownloader,
   LinkedInDownloader,
+  RedditDownloader,
 } from "../../api/Dowloader";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useDownloader } from "../../context/DownloaderContext";
@@ -34,6 +35,7 @@ const MainContent = () => {
     setSpotifyData,
     setThreadsData,
     setLinkData,
+    setRedditData,
   } = useDownloader();
   const [loading, setLoading] = useState<boolean>(false);
   const Navigate = useNavigate();
@@ -74,6 +76,10 @@ const MainContent = () => {
         case "Spotify":
           response = await SpotifyDownloader(data.url);
           setSpotifyData(response);
+          break;
+        case "Reddit":
+          response = await RedditDownloader(data.url);
+          setRedditData(response);
           break;
         default:
           throw new Error("Unsupported platform");
@@ -146,6 +152,7 @@ const MainContent = () => {
                 <option value="Twitter">Twitter</option>
                 <option value="Tiktok">Tiktok</option>
                 <option value="Linkedin">Linkedin</option>
+                <option value="Reddit">Reddit</option>
                 <option value="Spotify">Spotify</option>
               </select>
               {errors.selectedType && (
