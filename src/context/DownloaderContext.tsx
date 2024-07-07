@@ -8,6 +8,7 @@ import {
   ThreadsData,
   SpotifyData,
   LinkedinData,
+  RedditData,
 } from "../utils/Types";
 
 type DownloaderProviderProps = {
@@ -29,6 +30,7 @@ export const DownloaderProvider = ({ children }: DownloaderProviderProps) => {
   const [linkData, setLinkData] = useState<LinkedinData | null>(null);
   const [threadsData, setThreadsData] = useState<ThreadsData | null>(null);
   const [spotifyData, setSpotifyData] = useState<SpotifyData | null>(null);
+  const [redditData, setRedditData] = useState<RedditData | null>(null);
 
   return (
     <DownloaderContext.Provider
@@ -49,6 +51,8 @@ export const DownloaderProvider = ({ children }: DownloaderProviderProps) => {
         threadsData,
         setSpotifyData,
         spotifyData,
+        setRedditData,
+        redditData,
       }}
     >
       {children}
