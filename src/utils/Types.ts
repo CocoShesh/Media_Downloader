@@ -11,8 +11,8 @@ export interface DownloaderContextType {
   setInstaData: Dispatch<SetStateAction<InstgramData | null>>;
   setTiktokData: Dispatch<SetStateAction<TwitterData | null>>;
   tiktokData: TwitterData | null;
-  ytData: InstgramData | null;
-  setYtData: Dispatch<SetStateAction<InstgramData | null>>;
+  // ytData: InstgramData | null;
+  // setYtData: Dispatch<SetStateAction<InstgramData | null>>;
   threadsData: ThreadsData | null;
   setThreadsData: Dispatch<SetStateAction<ThreadsData | null>>;
   spotifyData: SpotifyData | null;
@@ -96,6 +96,12 @@ export interface ThreadsData {
 }
 
 export interface SpotifyData {
-  creator?: string;
-  result: string;
+  thumbnail: string;
+  title: string;
+  medias: {
+    url: string;
+    extension?: string;
+    type?: string;
+    quality?: string;
+  }[];
 }
