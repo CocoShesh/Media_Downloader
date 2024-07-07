@@ -159,3 +159,25 @@ export const SpotifyDownloader = async (url: string) => {
     throw error;
   }
 };
+
+export const RedditDownloader = async (url: string) => {
+  try {
+    const options = {
+      method: "POST",
+      url: "https://social-download-all-in-one.p.rapidapi.com/v1/social/autolink",
+      headers: {
+        "x-rapidapi-key": apiKey,
+        "x-rapidapi-host": "social-download-all-in-one.p.rapidapi.com",
+        "Content-Type": "application/json",
+      },
+      data: {
+        url: url,
+      },
+    };
+    const response = await axios.request(options);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
