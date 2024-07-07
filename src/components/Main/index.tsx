@@ -6,6 +6,7 @@ import {
   TiktokDownloader,
   SpotifyDownloader,
   ThreadsDownloader,
+  LinkedInDownloader,
 } from "../../api/Dowloader";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useDownloader } from "../../context/DownloaderContext";
@@ -32,6 +33,7 @@ const MainContent = () => {
     setTiktokData,
     setSpotifyData,
     setThreadsData,
+    setLinkData,
   } = useDownloader();
   const [loading, setLoading] = useState<boolean>(false);
   const Navigate = useNavigate();
@@ -61,10 +63,10 @@ const MainContent = () => {
           response = await TiktokDownloader(data.url);
           setTiktokData(response);
           break;
-        // case "Youtube":
-        //   response = await YoutubeDownloader(data.url);
-        //   setYtData(response);
-        //   break;
+        case "Linkedin":
+          response = await LinkedInDownloader(data.url);
+          setLinkData(response);
+          break;
         case "Threads":
           response = await ThreadsDownloader(data.url);
           setThreadsData(response);
@@ -143,7 +145,7 @@ const MainContent = () => {
                 <option value="Threads">Threads</option>
                 <option value="Twitter">Twitter</option>
                 <option value="Tiktok">Tiktok</option>
-                {/* <option value="Youtube">Youtube</option> */}
+                <option value="Linkedin">Linkedin</option>
                 <option value="Spotify">Spotify</option>
               </select>
               {errors.selectedType && (
