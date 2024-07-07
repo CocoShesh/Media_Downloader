@@ -4,7 +4,7 @@ import {
   FacebookDownloader,
   InstagramDownloader,
   TiktokDownloader,
-  YoutubeDownloader,
+  // YoutubeDownloader,
   ThreadsDownloader,
   SpotifyDownloader,
 } from "../../api/Dowloader";
@@ -31,7 +31,7 @@ const MainContent = () => {
     setFData,
     setInstaData,
     setTiktokData,
-    setYtData,
+    // setYtData,
     setThreadsData,
   } = useDownloader();
   const [loading, setLoading] = useState<boolean>(false);
@@ -62,10 +62,10 @@ const MainContent = () => {
           response = await TiktokDownloader(data.url);
           setTiktokData(response);
           break;
-        case "Youtube":
-          response = await YoutubeDownloader(data.url);
-          setYtData(response);
-          break;
+        // case "Youtube":
+        //   response = await YoutubeDownloader(data.url);
+        //   setYtData(response);
+        //   break;
         case "Threads":
           response = await ThreadsDownloader(data.url);
           setThreadsData(response);
@@ -144,7 +144,7 @@ const MainContent = () => {
                 <option value="Threads">Threads</option>
                 <option value="Twitter">Twitter</option>
                 <option value="Tiktok">Tiktok</option>
-                <option value="Youtube">Youtube</option>
+                {/* <option value="Youtube">Youtube</option> */}
                 <option value="Spotify">Spotify</option>
               </select>
               {errors.selectedType && (
