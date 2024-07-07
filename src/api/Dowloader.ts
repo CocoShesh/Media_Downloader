@@ -139,18 +139,19 @@ export const ThreadsDownloader = async (url: string) => {
 
 export const SpotifyDownloader = async (url: string) => {
   try {
-    const data = new FormData();
-    data.append("url", url);
-
     const options = {
       method: "POST",
-      url: "https://all-media-downloader1.p.rapidapi.com/spotifydl",
+      url: "https://social-download-all-in-one.p.rapidapi.com/v1/social/autolink",
       headers: {
         "x-rapidapi-key": apiKey,
-        "x-rapidapi-host": "all-media-downloader1.p.rapidapi.com",
+        "x-rapidapi-host": "social-download-all-in-one.p.rapidapi.com",
+        "Content-Type": "application/json",
       },
-      data: data,
+      data: {
+        url: url,
+      },
     };
+
     const response = await axios.request(options);
     return response.data;
   } catch (error) {
