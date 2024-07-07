@@ -4,9 +4,8 @@ import {
   FacebookDownloader,
   InstagramDownloader,
   TiktokDownloader,
-  // YoutubeDownloader,
-  ThreadsDownloader,
   SpotifyDownloader,
+  ThreadsDownloader,
 } from "../../api/Dowloader";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useDownloader } from "../../context/DownloaderContext";
@@ -31,7 +30,7 @@ const MainContent = () => {
     setFData,
     setInstaData,
     setTiktokData,
-    // setYtData,
+    setSpotifyData,
     setThreadsData,
   } = useDownloader();
   const [loading, setLoading] = useState<boolean>(false);
@@ -72,7 +71,7 @@ const MainContent = () => {
           break;
         case "Spotify":
           response = await SpotifyDownloader(data.url);
-          setThreadsData(response);
+          setSpotifyData(response);
           break;
         default:
           throw new Error("Unsupported platform");
