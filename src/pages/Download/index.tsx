@@ -4,7 +4,7 @@ import FacebookDownload from "../FacebookDownload";
 import InstagramDownload from "../InstagramDownload";
 import TiktokDownload from "../TiktokDownload";
 import TwitterDownload from "../TwitterDownload";
-// import YoutubeDownload from "../YoutubeDownload";
+import SpotifyDownload from "../SpotifyDownload";
 import ThreadsDownload from "../ThreadsDownload";
 import { Navigate } from "react-router-dom";
 
@@ -16,7 +16,7 @@ const componentMap: ComponentMap = {
   Twitter: TwitterDownload,
   Tiktok: TiktokDownload,
   Instagram: InstagramDownload,
-  // Youtube: YoutubeDownload,
+  Spotify: SpotifyDownload,
   Threads: ThreadsDownload,
 };
 
