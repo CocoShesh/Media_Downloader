@@ -73,7 +73,7 @@ const InstagramDownload = () => {
                     handleSelectedItem(
                       download,
                       `${video.link}`,
-                      `${instaData?.title}.${extension}`
+                      `${instaData?.title}.mp4`
                     );
                   }}
                   className="absolute bottom-0 bg-orange-500 w-full h-12 text-xl text-white rounded-b-md"
